@@ -102,8 +102,12 @@ This project includes documentation that simulates the deliverables of a custome
 - [Proposed Solution](docs/proposed-solution.md)
 - [Architecture](docs/architecture.md)
 - [Architecture Diagram](docs/architecture-diagram.md)
+- [Implementation Plan](docs/implementation-plan.md)
+- [Technical Tradeoffs](docs/technical-tradeoffs.md)
 - [Case Study](docs/case-study.md)
 - [Demo Script](docs/demo-script.md)
+- [Lessons Learned](docs/lessons-learned.md)
+- [Interview Stories](docs/interview-stories.md)
 
 ---
 
