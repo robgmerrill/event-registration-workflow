@@ -1,30 +1,55 @@
 # Event Registration Workflow Automation
 
-A lightweight workflow automation demo built for a Solutions Engineer portfolio.
+A customer-facing workflow automation project that simulates a lightweight consulting engagement for a professional training company.
 
-## Overview
+This project demonstrates how a manual event registration process can be transformed into a simple web-based workflow using Next.js and Airtable.
 
-This project demonstrates how a manual event registration process can be automated using a simple web application and Airtable.
+---
 
-Users can submit event registrations through a form. The application validates the input, sends the registration to a server-side API route, creates a record in Airtable, generates a confirmation message, and displays registrations in a dashboard.
+## Live Demo
+
+https://event-registration-workflow.vercel.app/
+
+---
+
+## Project Summary
+
+TechForward Learning is a fictional professional training company that manages event registrations manually using email and shared spreadsheets.
+
+The company needed a simple way to:
+
+- Capture event registrations
+- Store attendee data centrally
+- Generate consistent confirmation messages
+- Give operations staff visibility into registrations
+- Reduce manual administrative work
+
+The solution is a Next.js application with:
+
+- A public registration form
+- A server-side API route
+- Airtable as the system of record
+- An internal dashboard for viewing registrations and basic metrics
+
+---
 
 ## Business Problem
 
-A training company manages event registrations manually using spreadsheets and email. This creates repetitive administrative work, inconsistent confirmation messages, and limited visibility into registration activity.
+The original process required staff to manually copy registration information into spreadsheets, send confirmation emails, and calculate registration counts by hand.
 
-## Solution
+This created several problems:
 
-The solution provides:
+- Duplicate data entry
+- Inconsistent communication
+- Limited reporting
+- No real-time dashboard
+- Increased administrative burden as event volume grew
 
-- A registration form for attendees
-- Frontend validation
-- Backend validation
-- Airtable record creation
-- Automatically generated confirmation messages
-- A dashboard that reads from Airtable
-- Basic metrics for total registrations and unique events
+---
 
-## Architecture
+## Proposed Solution
+
+The implemented solution uses a lightweight architecture:
 
 ```text
 User
@@ -39,3 +64,92 @@ Airtable Attendees Table
   ↓
 Next.js Dashboard
 ```
+
+This architecture keeps the user experience simple while protecting Airtable credentials on the server side.
+
+---
+
+## Tech Stack
+
+- Next.js
+- React
+- TypeScript
+- Airtable API
+- Vercel
+- GitHub
+
+---
+
+## Key Features
+
+- Event registration form
+- Frontend validation
+- Server-side request validation
+- Airtable record creation
+- Automatic confirmation message generation
+- Registration dashboard
+- Basic operational metrics
+
+---
+
+## Consulting Engagement Documents
+
+This project includes documentation that simulates the deliverables of a customer-facing technical engagement.
+
+- [Customer Profile](docs/customer-profile.md)
+- [Discovery Notes](docs/discovery-notes.md)
+- [Business Requirements](docs/business-requirements.md)
+- [Proposed Solution](docs/proposed-solution.md)
+- [Architecture](docs/architecture.md)
+- [Architecture Diagram](docs/architecture-diagram.md)
+- [Case Study](docs/case-study.md)
+- [Demo Script](docs/demo-script.md)
+
+---
+
+## What This Project Demonstrates
+
+This project is designed to show more than coding ability.
+
+It demonstrates:
+
+- Discovery thinking
+- Business requirements translation
+- Workflow automation
+- API integration
+- SaaS implementation
+- Secure server-side credential handling
+- Dashboard design
+- Customer-facing technical communication
+- Tradeoff reasoning
+
+---
+
+## Security Notes
+
+Airtable credentials are stored in environment variables and are never exposed to the browser.
+
+The browser submits registration data to a server-side Next.js API route, which then communicates with Airtable.
+
+---
+
+## Future Enhancements
+
+Potential next steps include:
+
+- Email delivery through SendGrid, Resend, or Postmark
+- Authentication for the dashboard
+- Event capacity limits
+- Registration status updates
+- Search and filtering
+- CRM integration
+- Calendar integration
+- Error monitoring and logging
+
+---
+
+## Portfolio Framing
+
+This project represents a small-scale implementation consulting engagement.
+
+The goal was not only to build a working application, but to demonstrate how a customer problem can be translated into requirements, architecture, implementation, and a clear business outcome.
