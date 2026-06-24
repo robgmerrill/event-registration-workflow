@@ -56,7 +56,8 @@ export default async function DashboardPage() {
         <strong>EventFlow Demo</strong>
 
         <div style={{ display: "flex", gap: 16 }}>
-          <Link href="/">Register</Link>
+          <Link href="/">Case Study</Link>
+          <Link href="/register">Register</Link>
           <Link href="/dashboard">Dashboard</Link>
         </div>
       </nav>

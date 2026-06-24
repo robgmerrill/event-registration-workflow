@@ -1,195 +1,102 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
 
 export default function Home() {
-  const [attendeeName, setAttendeeName] = useState("");
-  const [email, setEmail] = useState("");
-  const [eventName, setEventName] = useState("Intro to AI");
-  const [message, setMessage] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-
-  async function handleSubmit(event: React.FormEvent) {
-    event.preventDefault();
-
-    if (!attendeeName.trim()) {
-      setMessage("Please enter an attendee name.");
-      return;
-    }
-
-    if (!email.trim()) {
-      setMessage("Please enter an email address.");
-      return;
-    }
-
-    if (!email.includes("@")) {
-      setMessage("Please enter a valid email address.");
-      return;
-    }
-
-    setIsSubmitting(true);
-    setMessage("Submitting registration...");
-
-    const response = await fetch("/api/registrations", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        attendeeName,
-        email,
-        eventName,
-      }),
-    });
-
-    if (response.ok) {
-      setMessage("Registration submitted successfully!");
-      setAttendeeName("");
-      setEmail("");
-      setEventName("Intro to AI");
-    } else {
-      setMessage("Something went wrong. Please try again.");
-    }
-
-    setIsSubmitting(false);
-  }
-
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        background: "#f8fafc",
-        padding: 40,
-        fontFamily: "Arial",
-        color: "#111827",
-      }}
-    >
-      <nav
-        style={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 40,
-        }}
-      >
-        <strong>EventFlow Demo</strong>
+    <main className="min-h-screen bg-slate-50 px-6 py-8 text-slate-950 sm:px-10">
+      <nav className="mx-auto mb-16 flex max-w-6xl items-center justify-between">
+        <strong className="text-sm tracking-wide text-slate-900">
+          Event Registration Workflow Automation System
+        </strong>
 
-        <div style={{ display: "flex", gap: 16 }}>
-          <Link href="/">Register</Link>
-          <Link href="/dashboard">Dashboard</Link>
+        <div className="flex gap-5 text-sm text-slate-600">
+          <Link className="hover:text-slate-950" href="/register">
+            Demo
+          </Link>
         </div>
       </nav>
 
-      <section
-        style={{
-          maxWidth: 520,
-          margin: "0 auto",
-          background: "white",
-          border: "1px solid #e5e7eb",
-          borderRadius: 16,
-          padding: 32,
-          boxShadow: "0 10px 25px rgba(0,0,0,0.06)",
-        }}
-      >
-        <h1 style={{ marginBottom: 8 }}>Event Registration</h1>
-
-        <p style={{ color: "#6b7280", marginBottom: 24 }}>
-          Register for an upcoming training event. Submissions are stored in
-          Airtable and displayed on the dashboard.
-        </p>
-
-        <form
-          onSubmit={handleSubmit}
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-          }}
-        >
-          <label>
-            Attendee Name
-            <input
-              placeholder="Sarah Johnson"
-              value={attendeeName}
-              onChange={(event) => setAttendeeName(event.target.value)}
-              style={{
-                width: "100%",
-                marginTop: 6,
-                padding: 12,
-                border: "1px solid #d1d5db",
-                borderRadius: 8,
-              }}
-            />
-          </label>
-
-          <label>
-            Email
-            <input
-              placeholder="sarah@example.com"
-              value={email}
-              onChange={(event) => setEmail(event.target.value)}
-              style={{
-                width: "100%",
-                marginTop: 6,
-                padding: 12,
-                border: "1px solid #d1d5db",
-                borderRadius: 8,
-              }}
-            />
-          </label>
-
-          <label>
-            Event
-            <select
-              value={eventName}
-              onChange={(event) => setEventName(event.target.value)}
-              style={{
-                width: "100%",
-                marginTop: 6,
-                padding: 12,
-                border: "1px solid #d1d5db",
-                borderRadius: 8,
-              }}
-            >
-              <option>Intro to AI</option>
-              <option>Modern JavaScript</option>
-              <option>Cloud Fundamentals</option>
-            </select>
-          </label>
-
-          <button
-            type="submit"
-            disabled={isSubmitting}
-            style={{
-              marginTop: 8,
-              padding: 12,
-              border: "none",
-              borderRadius: 8,
-              background: isSubmitting ? "#93c5fd" : "#2563eb",
-              color: "white",
-              fontWeight: 700,
-              cursor: isSubmitting ? "not-allowed" : "pointer",
-            }}
-          >
-            {isSubmitting ? "Submitting..." : "Register"}
-          </button>
-        </form>
-
-        {message && (
-          <p
-            style={{
-              marginTop: 20,
-              padding: 12,
-              background: "#eff6ff",
-              border: "1px solid #bfdbfe",
-              borderRadius: 8,
-              color: "#1e40af",
-            }}
-          >
-            {message}
+      <section className="mx-auto grid max-w-6xl gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+        <div>
+          <p className="mb-4 text-sm font-semibold uppercase tracking-[0.2em] text-blue-700">
+            Event Registration Workflow Automation System
           </p>
-        )}
+          <h1 className="max-w-4xl text-4xl font-bold tracking-tight text-slate-950 sm:text-5xl">
+            Event Registration Workflow Automation
+          </h1>
+          <p className="mt-6 max-w-3xl text-lg leading-8 text-slate-600">
+            A workflow automation system that replaces manual event tracking
+            with a structured registration and reporting system using Airtable
+            and Next.js.
+          </p>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Link
+              className="rounded-lg bg-blue-600 px-5 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-700"
+              href="/register"
+            >
+              Enter Demo
+            </Link>
+            <a
+              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-slate-400"
+              href="https://github.com/robgmerrill/event-registration-workflow"
+              rel="noreferrer"
+              target="_blank"
+            >
+              View GitHub
+            </a>
+            <Link
+              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-slate-400"
+              href="/docs/architecture.md"
+            >
+              View Architecture
+            </Link>
+            <Link
+              className="rounded-lg border border-slate-300 bg-white px-5 py-3 text-sm font-semibold text-slate-800 shadow-sm hover:border-slate-400"
+              href="/docs/case-study.md"
+            >
+              View Case Study
+            </Link>
+          </div>
+        </div>
+
+        <aside className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_25px_rgba(0,0,0,0.06)]">
+          <h2 className="text-xl font-semibold text-slate-950">
+            Workflow Context
+          </h2>
+          <p className="mt-4 leading-7 text-slate-600">
+            This project demonstrates how organizations can transition from
+            manual spreadsheet-based event tracking and email coordination into
+            a structured workflow system.
+          </p>
+          <ul className="mt-4 list-disc space-y-2 pl-5 leading-7 text-slate-600 marker:text-blue-600">
+            <li>Capturing registrations through a web form</li>
+            <li>Storing data in Airtable</li>
+            <li>Surfacing registrations in an operational dashboard</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section className="mx-auto mt-10 grid max-w-6xl gap-8 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="rounded-2xl border border-blue-100 bg-blue-50 p-6 text-sm leading-6 text-blue-950">
+          <h2 className="font-semibold">Important Note</h2>
+          <p className="mt-2">
+            This is a portfolio simulation of a workflow automation system. It
+            is not a production SaaS product.
+          </p>
+        </div>
+
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-[0_10px_25px_rgba(0,0,0,0.06)]">
+          <h2 className="text-xl font-semibold text-slate-950">
+            What This Project Demonstrates
+          </h2>
+          <ul className="mt-5 grid list-disc gap-3 pl-5 text-slate-700 marker:text-blue-600 sm:grid-cols-2">
+            <li>Workflow automation design</li>
+            <li>Airtable data modeling and system-of-record design</li>
+            <li>Next.js API route integration</li>
+            <li>Operational dashboard visibility</li>
+            <li>Implementation tradeoffs in lightweight systems</li>
+          </ul>
+        </div>
       </section>
     </main>
   );
